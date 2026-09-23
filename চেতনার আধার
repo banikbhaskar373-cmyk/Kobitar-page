@@ -1,1 +1,93 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Digital Studio, Kolkata</title>
+<style>
+body{font-family:Arial;text-align:center;background:#fffbe6;margin:0;padding-bottom:30px}
+.header{background:#FFC107;padding:20px;color:#0D2A54}
+.btn{display:block;margin:10px auto;padding:14px;width:85%;max-width:320px;border-radius:10px;color:white;text-decoration:none;font-weight:bold;font-size:17px}
+.call{background:#0D2A54}
+.whatsapp{background:#25D366}
+.box{margin:20px auto;background:white;padding:15px;border-radius:12px;width:90%;max-width:350px;box-shadow:0 2px 8px #ccc}
+.poem-box{background:#fdf6e3;border-left:5px solid #D93025;text-align:left;padding:20px;line-height:1.8}
+.poem-title{font-size:22px;font-weight:bold;color:#0D2A54;text-align:center;margin-bottom:15px}
+input,textarea{width:90%;padding:10px;margin:8px;border:1px solid #ccc;border-radius:6px}
+.submit{background:#D93025;color:white;border:none;padding:12px 20px;border-radius:8px;font-weight:bold;cursor:pointer;width:95%}
+#reader{width:100%}
+</style>
+</head>
+<body>
 
+<div class="header">
+<h1>Bhaskar Digital Studio</h1>
+<p>Kolkata • banikbhaskar373@gmail.com</p>
+</div>
+
+<div class="box">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://bhaskar-digital-qr-kolkata-710622.netlify.app">
+<p><b>bhaskar-digital-qr-kolkata-710622.netlify.app</b></p>
+</div>
+
+<a class="btn call" href="tel:+919433209439">📞 কল করুন - 9433209439</a>
+<a class="btn call" href="tel:+919674131894" style="background:#1a3d7a;">📞 কল করুন - 9674131894</a>
+<a class="btn whatsapp" href="https://wa.me/919433209439">💬 WhatsApp</a>
+
+<div class="box poem-box">
+<div class="poem-title">*অবোধ সভ্যতা*<br><span style="font-size:14px;font-weight:normal;">— আমার শাশ্বত বোধ —</span></div>
+সভ্যতা আসে যায়, রীতি নীতি বদলায়<br>
+হয়নি বদল কভু-হিংসা ও লোভে,<br>
+কার আগে কে যাবে-<br>
+কাকে মেরে কে রবে,<br>
+সদাই ফুঁসছে মন, না পাওয়ার ক্ষোভে।<br><br>
+
+জানা নাই শ্রদ্ধা, জানা নাই ভক্তি, <br>
+বিশ্বাস হীনমনে নাহি তাই শক্তি,<br>
+সভ্যতা ধ্বজা তলে দীপ জ্বেলে দাঁড়িয়ে <br>
+কিভাবে পাওয়া যাবে জীবনের মুক্তি।<br><br>
+
+চাওয়া আর পাওয়াতেই কেটে যায় দিন<br>
+বোধের আগুন মনে ক্ষীণ অতি ক্ষীণ <br>
+অথচ উষ্ণতায় প্রকৃতির দেহ গেলে খসে<br>
+আমার কি যায় আসে, ভেবে যাবো বসে<br><br>
+
+মাতার পরশে এলাম প্রকৃতির কোলে<br>
+স্বীকার করিনা দায় অবোধ অবিচলে, <br>
+শ্বাসে তে কৃতজ্ঞ আর উষ্ণতা রোধে<br>
+অঙ্গীকারে বাঁধেনি মন, মাতৃ ঋণ শোধে।
+</div>
+
+<div class="box">
+<h3>📧 Email করুন</h3>
+<form action="https://formsubmit.co/banikbhaskar373@gmail.com" method="POST">
+<input type="text" name="name" placeholder="আপনার নাম" required>
+<input type="tel" name="phone" placeholder="ফোন নম্বর" required>
+<textarea name="message" placeholder="মেসেজ লিখুন" required></textarea>
+<input type="hidden" name="_captcha" value="false">
+<button type="submit" class="submit">Email পাঠান</button>
+</form>
+</div>
+
+<div class="box">
+<h3>📷 QR Scanner</h3>
+<input type="file" id="qr-file" accept="image/*">
+<div id="reader"></div>
+<p id="result" style="font-weight:bold;color:green;font-size:18px;"></p>
+</div>
+
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script>
+const resultEl = document.getElementById('result');
+const html5QrCode = new Html5Qrcode("reader");
+document.getElementById('qr-file').addEventListener('change', e => {
+  const file = e.target.files[0]; if(!file) return;
+  resultEl.innerText = "পড়া হচ্ছে...";
+  html5QrCode.scanFile(file, true).then(t=>{ resultEl.innerText="পাওয়া গেছে: "+t; }).catch(()=>{ resultEl.innerText="QR পাওয়া যায়নি"; });
+});
+let scanner = new Html5QrcodeScanner("reader", { fps:10, qrbox:250 });
+scanner.render(text=>{ resultEl.innerText="পাওয়া গেছে: "+text; });
+</script>
+
+</body>
+</html>
